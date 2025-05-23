@@ -380,16 +380,7 @@ function get_unpaid_violations_count_by_vehicle($conn, $vehicle_id) {
 
 /**
  * Log admin action
- */
-function log_action($conn, $user_id, $action, $target_table, $target_id) {
-    $sql = "INSERT INTO operation_history (user_id, action, target_table, target_id, action_date) 
-            VALUES (?, ?, ?, ?, NOW())";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("issi", $user_id, $action, $target_table, $target_id);
-    $stmt->execute();
-}
 
-/**
  * Lấy top 4 hành vi vi phạm nhiều nhất theo ngày (trong ngày hiện tại)
  */
 function get_top_violation_categories_by_day($conn, $date = null, $limit = 4, $year = null) {
